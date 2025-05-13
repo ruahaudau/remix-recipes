@@ -6,10 +6,29 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../generated/prisma"
+  //output   = "../generated/prisma"
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model PantryShelf {
+  id String @id @default(cuid())
+  name String
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+
+  items PantryItems[]
+}
+
+model PantryItems {
+  id String @id @default(cuid())
+  name String
+  shelfID String
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+
+  shelf PantryShelf @relation(fields:[shelfID], references: [id], onDelete: Cascade)
 }

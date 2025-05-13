@@ -6,7 +6,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-} from "react-router";
+} from 'react-router-dom';
 
 import {Link} from 'react-router-dom';
 import "./app.css";
@@ -24,7 +24,7 @@ export default function AppLayout() {
         <Meta />
         <Links />
       </head>
-      <body className='md:flex md:h-screen'> 
+      <body className='md:flex md:h-screen'>
         <nav className="bg-primary text-white">
           <ul className="flex md:flex-col">
             <AppNavLink to="/"><HomeIcon /></AppNavLink>
@@ -33,12 +33,13 @@ export default function AppLayout() {
             <AppNavLink to="/settings"><SettingsIcon /></AppNavLink>
           </ul>
         </nav>
-        <div className='p-4'>
-          <Outlet />
-        </div>
-        <ScrollRestoration />
-        <Scripts />
+          <div className='p-4'>
+            <Outlet />
+          </div>
+          <ScrollRestoration />
+          <Scripts />
       </body>
+      
     </html>
   );
 }
